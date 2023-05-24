@@ -1,0 +1,58 @@
+{
+    "book_title": "Sentences",
+    "url": "https://en.wikisource.org/wiki/Marcus_Aurelius_Antoninus_-_His_Meditations_concerning_himselfe",
+    "data": [
+        {
+            "title": "Table",
+            "url": "https://en.wikisource.org/wiki/Marcus_Aurelius_Antoninus_-_His_Meditations_concerning_himselfe#THE_FIRST_BOOK",
+            "sentences": [
+                " Table is black",
+                " Table is not black",
+                " Table is white",
+                " Table is wooden"
+            ]
+        },
+        {
+            "title": "Chair",
+            "url": "https://en.wikisource.org/wiki/Marcus_Aurelius_Antoninus_-_His_Meditations_concerning_himselfe#THE_SECOND_BOOK",
+            "sentences": [
+                " Chair is black",
+                " Chair is not black",
+                " Chair is white",
+                " Chair is wooden"
+            ]
+        },
+        {
+            "title": "Cat",
+            "url": "https://en.wikisource.org/wiki/Marcus_Aurelius_Antoninus_-_His_Meditations_concerning_himselfe#THE_THIRD_BOOK",
+            "sentences": [
+                " Cat eat fish",
+                " Cat doesnt eat black fish",
+                " Cat doesnt eat sea fish",
+                " Cat doesnt eat not white fish",
+                " Cat doesnt eat black fish"
+            ]
+        },
+        {
+            "title": "Cat color",
+            "url": "https://en.wikisource.org/wiki/Marcus_Aurelius_Antoninus_-_His_Meditations_concerning_himselfe#THE_FOURTH_BOOK",
+            "sentences": [
+                " Cat is black",
+                " Cat is not black",
+                " Cat is white",
+                " Cat is wooden"
+            ]
+        },
+        {
+            "title": "Denial",
+            "url": "https://en.wikisource.org/wiki/Marcus_Aurelius_Antoninus_-_His_Meditations_concerning_himselfe#THE_THIRD_BOOK",
+            "sentences": [
+                " Denial is black",
+                " Denial is crucial",
+                " Denial is needed",
+                " Denial is wrong",
+                " Denial is philosophy"
+            ]
+        }
+    ]
+}
