@@ -25,7 +25,7 @@ BOOK_FILENAME = "Marcus_Aurelius_Antoninus_-_His_Meditations_concerning_himselfe
 # SENTENCE_MIN_LENGTH = 15
 SENTENCE_MIN_LENGTH = 2
 
-class VectorizeTextEngine:
+class VectorizeBookTextEngine:
 
 
     def __init__(self, collection_name :str, nlp_model :NlpModel):

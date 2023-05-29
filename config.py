@@ -17,7 +17,6 @@ QDRANT_HOST = "e9ef9c6a-888b-4f78-a401-8d0833138b37.us-east-1-0.aws.cloud.qdrant
     # os.getenv("QDRANT_PORT")
 QDRANT_API_KEY = "oAD1bjm8THHnMSQo_zCBTAocA5m-mN4niawGQ0uylQQfXAzpmzSWLA"
     # os.getenv("QDRANT_API_KEY")
-COLLECTION_NAME = "meditations-collection_2"
 
 COLLECTION_NAME = "meditations-collection_3"
 
@@ -25,5 +24,5 @@ COLLECTION_NAME = "meditations-collection_3"
 # VECTOR_PARAMS_SIZE = 1536
 
 # OpenAI
-OPENAI_API_KEY = "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"
+OPENAI_API_KEY = "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"
     # os.getenv("OPENAI_API_KEY")
