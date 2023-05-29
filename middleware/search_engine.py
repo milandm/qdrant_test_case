@@ -30,6 +30,7 @@ class SearchEngine:
         if not is_close(similar_docs[0].score, 1, 0.05):
             payloads=[
                 {
+                    "data_type": "question",
                     "question": question
                 }
             ]
@@ -38,8 +39,8 @@ class SearchEngine:
 
         similar_docs = self.qdrant_client.search_filtered_sentences(query_vector = question_embedding,
                                                                     must_have_or_must_not_have=False,
-                                                                    query_filter_key = "question",
-                                                                    query_filter_value = question)
+                                                                    query_filter_key = "data_type",
+                                                                    query_filter_value = "answer")
 
         print(similar_docs)
 
@@ -54,8 +55,8 @@ class SearchEngine:
 
     def recommend_history_based(self) -> dict:
         filtered_sentences = self.qdrant_client.query_payloads_filtered_sentences(
-                                                                    query_filter_key = "question",
-                                                                    query_filter_value = question)
+                                                                    query_filter_key = "data_type",
+                                                                    query_filter_value = "question")
 
         positive_queries_ids = [item['id'] for item in filtered_sentences]
         similar_docs = self.qdrant_client.recommend_sentences(positive_queries_ids = positive_queries_ids)

@@ -97,28 +97,17 @@ class QdrantDbClient:
                                                            Sequence[float],
                                                            tuple[str, list[float]],
                                                            types.NamedVector],
-                                  must_have_or_must_not_have: bool,
                                   query_filter_key: str,
                                   query_filter_value: str) ->  list[ScoredPoint]:
 
-        if must_have_or_must_not_have:
-            query_filter = Filter(
-                must=[
-                    FieldCondition(
-                        key=query_filter_key,
-                        match=MatchValue(value=query_filter_value)
-                    )
-                ]
-            )
-        else:
-            query_filter = Filter(
-                must_not=[
-                    FieldCondition(
-                        key=query_filter_key,
-                        match=MatchValue(value=query_filter_value)
-                    )
-                ]
-            )
+        query_filter = Filter(
+            must=[
+                FieldCondition(
+                    key=query_filter_key,
+                    match=MatchValue(value=query_filter_value)
+                )
+            ]
+        )
 
         similar_docs = self.client.search(
             collection_name=self.collection_name,

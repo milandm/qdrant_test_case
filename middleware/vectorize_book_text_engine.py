@@ -79,6 +79,7 @@ class VectorizeBookTextEngine:
     def upsert_sentences(self):
         payloads=[
             {
+                "data_type": "answer",
                 "text": row["sentence"],
                 "title": row["title"] + f", {self.book_name}",
                 "url": row["url"],
