@@ -38,7 +38,7 @@ class VectorizeTextEngine:
         with open(f"{DATA}/processed/{BOOK_FILENAME}/{BOOK_FILENAME}.json", "r") as file:
             self.meditations_json = json.load(file)
 
-    def read_sentences(self) -> pd.DataFrame:
+    def read_sentences(self):
 
         rows = []
         for chapter in tqdm(self.meditations_json["data"]):
@@ -77,7 +77,19 @@ class VectorizeTextEngine:
 
 
     def upsert_sentences(self):
-        self.client.upsert_sentences(self.book_name,  self.vectors, self.df)
+
+        ids=[i for i in range(self.df.shape[0])],
+        payloads=[
+            {
+                "text": row["sentence"],
+                "title": row["title"] + f", {self.book_name}",
+                "url": row["url"],
+            }
+            for _, row in self.df.iterrows()
+        ],
+        vectors=[v.tolist() for v in self.vectors]
+
+        self.client.upsert_sentences(ids,  payloads, vectors)
 
 
 
