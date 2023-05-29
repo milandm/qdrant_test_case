@@ -24,5 +24,5 @@ COLLECTION_NAME = "meditations-collection_3"
 # VECTOR_PARAMS_SIZE = 1536
 
 # OpenAI
-OPENAI_API_KEY = "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"
+OPENAI_API_KEY = ""
     # os.getenv("OPENAI_API_KEY")

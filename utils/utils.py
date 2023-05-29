@@ -21,3 +21,8 @@ def prepare_template(template: str, key_value_to_change:dict) -> str:
     # mapping = defaultdict(str, key_value_to_change)
     # prepared_prompt = template.format_map(mapping=mapping)
     return prepared_prompt
+
+
+@staticmethod
+def is_close(a, b, threshold):
+    return abs(a - b) <= threshold

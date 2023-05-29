@@ -77,8 +77,6 @@ class VectorizeBookTextEngine:
 
 
     def upsert_sentences(self):
-
-        ids=[i for i in range(self.df.shape[0])],
         payloads=[
             {
                 "text": row["sentence"],
@@ -86,10 +84,10 @@ class VectorizeBookTextEngine:
                 "url": row["url"],
             }
             for _, row in self.df.iterrows()
-        ],
+        ]
         vectors=[v.tolist() for v in self.vectors]
 
-        self.client.upsert_sentences(ids,  payloads, vectors)
+        self.client.upsert_sentences( payloads, vectors)
 
 
 
