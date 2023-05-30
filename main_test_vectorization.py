@@ -1,4 +1,4 @@
-from middleware.vectorize_text_engine import VectorizeBookTextEngine
+from middleware.vectorize_book_text_engine import VectorizeBookTextEngine
 from middleware.nlp_model.openai_sdk_interceptor import OpenaiSdkInterceptor
 
 from config import COLLECTION_NAME

@@ -8,4 +8,4 @@ from config import COLLECTION_NAME
 if __name__ == "__main__":
     nlp_model = OpenaiSdkInterceptor()
     search_engine = SearchEngine(COLLECTION_NAME, nlp_model)
-    print(search_engine.ask("Dog eats bone"))
+    print(search_engine.ask("Cow eats bone"))

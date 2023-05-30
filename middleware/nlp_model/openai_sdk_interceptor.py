@@ -49,7 +49,6 @@ class OpenaiSdkInterceptor(NlpModel):
         if isinstance(text, str):
             text = [text]
         embedding = openai.Embedding.create(input=text, model=OPENAI_NLP_MODEL)
-        # return embedding['data'][0]['embedding']
 
         embeddings = [row["embedding"]
             for row in embedding['data']

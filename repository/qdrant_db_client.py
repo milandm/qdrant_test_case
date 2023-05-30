@@ -74,15 +74,15 @@ class QdrantDbClient:
     def query_payloads_filtered_sentences(self,query_filter_key: str,
                                             query_filter_value: str) ->  list[ScoredPoint]:
 
-
         query_filter = Filter(
             must=[
                 FieldCondition(
                     key=query_filter_key,
-                    match=models.MatchAny(value=query_filter_value)
+                    match=MatchValue(value=query_filter_value)
                 )
             ]
         )
+
 
         similar_docs = self.client.scroll(
             collection_name=self.collection_name,

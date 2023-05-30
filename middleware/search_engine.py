@@ -27,7 +27,7 @@ class SearchEngine:
     def ask(self,question: str) -> dict:
         question_embedding = self.model.get_embedding(question)
         similar_docs = self.qdrant_client.search_sentences(encoded_question = question_embedding)
-        if not is_close(similar_docs[0].score, 1, 0.05):
+        if not is_close(similar_docs[0].score, 1, 0.01):
             payloads=[
                 {
                     "data_type": "question",
@@ -38,7 +38,6 @@ class SearchEngine:
             self.qdrant_client.upsert_sentences(payloads, vectors)
 
         similar_docs = self.qdrant_client.search_filtered_sentences(query_vector = question_embedding,
-                                                                    must_have_or_must_not_have=False,
                                                                     query_filter_key = "data_type",
                                                                     query_filter_value = "answer")
 
@@ -58,12 +57,12 @@ class SearchEngine:
                                                                     query_filter_key = "data_type",
                                                                     query_filter_value = "question")
 
-        positive_queries_ids = [item['id'] for item in filtered_sentences]
+        positive_queries_ids = [item.id for item in filtered_sentences[0]]
         similar_docs = self.qdrant_client.recommend_sentences(positive_queries_ids = positive_queries_ids)
 
         print(filtered_sentences[0])
 
-        prompt, references = self.prompt_template_creator.create_similar_sentences_prompt(filtered_sentences[0], similar_docs)
+        prompt, references = self.prompt_template_creator.create_recommended_sentences_prompt(filtered_sentences[0], similar_docs)
         response = self.model.send_prompt(prompt)
 
         return {
