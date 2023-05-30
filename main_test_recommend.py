@@ -1,4 +1,4 @@
-from middleware.recommendation_service import RecommendationService
+from middleware.services.recommendation_service import RecommendationService
 from middleware.nlp_model.openai_sdk_interceptor import OpenaiSdkInterceptor
 
 

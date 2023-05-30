@@ -1,7 +1,7 @@
 
 from fastapi import HTTPException, Response
-from middleware.search_service import SearchService
-from middleware.recommendation_service import RecommendationService
+from middleware.services.search_service import SearchService
+from middleware.services.recommendation_service import RecommendationService
 from middleware.nlp_model.openai_sdk_interceptor import OpenaiSdkInterceptor
 from middleware.exceptions.search_exceptions import SearchExceptionCode
 from middleware.exceptions.recommendation_exception import RecommendationExceptionCode

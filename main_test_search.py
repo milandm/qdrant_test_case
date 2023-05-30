@@ -1,4 +1,4 @@
-from middleware.search_service import SearchService
+from middleware.services.search_service import SearchService
 from middleware.nlp_model.openai_sdk_interceptor import OpenaiSdkInterceptor
 
 
