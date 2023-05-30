@@ -15,7 +15,7 @@ SENTENCE_MIN_LENGTH = 2
 
 
 
-class SearchEngine:
+class SearchService:
 
 
     def __init__(self, collection_name :str, nlp_model :NlpModel):
@@ -24,7 +24,7 @@ class SearchEngine:
         self.prompt_template_creator = PromptTemplateCreator()
 
 
-    def ask(self,question: str) -> dict:
+    def search(self, question: str) -> dict:
         question_embedding = self.model.get_embedding(question)
         similar_docs = self.qdrant_client.search_sentences(encoded_question = question_embedding)
         if not is_close(similar_docs[0].score, 1, 0.01):
@@ -44,25 +44,6 @@ class SearchEngine:
         print(similar_docs)
 
         prompt, references = self.prompt_template_creator.create_similar_sentences_prompt(question, similar_docs)
-        response = self.model.send_prompt(prompt)
-
-        return {
-            "response": response["choices"][0]["message"]["content"],
-            "references": references,
-        }
-
-
-    def recommend_history_based(self) -> dict:
-        filtered_sentences = self.qdrant_client.query_payloads_filtered_sentences(
-                                                                    query_filter_key = "data_type",
-                                                                    query_filter_value = "question")
-
-        positive_queries_ids = [item.id for item in filtered_sentences[0]]
-        similar_docs = self.qdrant_client.recommend_sentences(positive_queries_ids = positive_queries_ids)
-
-        print(filtered_sentences[0])
-
-        prompt, references = self.prompt_template_creator.create_recommended_sentences_prompt(filtered_sentences[0], similar_docs)
         response = self.model.send_prompt(prompt)
 
         return {
